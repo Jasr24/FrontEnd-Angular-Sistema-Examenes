@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service'
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  public user = {
+    username : '',
+    password : '',
+    nombre : '',
+    apellido : '',
+    email : '',
+    telefono : ''
+  }
+
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
   }
 
+  formSubmit(){
+    console.log(this.user);
+    if(this.user.username == '' || this.user.username == null){
+      alert('El nombre de usuario es requerido');
+      return;
+    }
+
+    this.userService.añadirUsuario(this.user).subscribe( //subscribe es el observable
+      (data) => {
+        console.log(data);
+        alert('Usuario guardado con exito');
+      },(error) => {
+        console.log(error);
+        alert('Ha ocurrido un error en el sistema');
+      }
+    )
+  }
 }
