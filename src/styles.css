@@ -10,3 +10,35 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width{
   width: 100%
 }
+
+.ml20{
+  margin-left: 20px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
+}
+
+.mr20{
+  margin-right: 20px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
+}
+
+.mt20{
+  margin-top: 20px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
+}
+
+.mb20{
+  margin-bottom: 20px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
+}
+
+.ml10{
+  margin-left: 10px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
+}
+
+.mr10{
+  margin-right: 10px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
+}
+
+.mt10{
+  margin-top: 10px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
+}
+
+.mb10{
+  margin-bottom: 10px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
+}
