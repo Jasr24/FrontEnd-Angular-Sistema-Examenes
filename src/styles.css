@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #f5f5f5;
+}
 
 .text-center{
   text-align: center;
@@ -41,4 +44,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mb10{
   margin-bottom: 10px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
+}
+
+.ml70{
+  margin-left: 70px !important; /*Permite declarar un atributo de forma que este tenga prevalencia sobre otras declaraciones posteriores; es decir desactiva las reglas de cascada.*/
 }

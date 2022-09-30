@@ -1,0 +1,3 @@
+.example-spacer{
+  flex: 1 1 auto; /*Este flex nos puso el navbar... el portal de examenes al lado izquierdo y el inicio de secion a la derecha*/
+}
