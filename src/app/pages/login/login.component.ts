@@ -1,5 +1,6 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from './../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
     "password" : ""
   }
 
-  constructor(private snack:MatSnackBar) { }
+  constructor(private snack:MatSnackBar, private loginService:LoginService) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +33,15 @@ export class LoginComponent implements OnInit {
       })
       return;
     }
+
+    //Para que esto funcione se debe agragar en el backend la anotacion @CrossOrigin("*"). con esta anotacion permite el intercambio de recursos entre el backend y el front end.
+    this.loginService.generateToken(this.loginData).subscribe(
+      (data:any) => {
+        console.log(data);
+      },(error) => {
+        console.log(error);
+      }
+    )
   }
 
 }
