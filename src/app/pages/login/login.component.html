@@ -8,17 +8,17 @@
           </div>
 
           <h1 class="text-center">Inicio de sesión</h1>
-          <form class="" action="" method="">
+          <form (ngSubmit) = formSubmit()>
 
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Nombre de usuario</mat-label>
-              <input required matInput placeholder="Digite su nombre de usuario">
+              <input [(ngModel)]="loginData.username" name="username" required matInput placeholder="Digite su nombre de usuario">
               <mat-hint>El nombre de usuario debe ser válido</mat-hint>
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Contraseña</mat-label>
-              <input required type="password" matInput placeholder="Digite su contraseña">
+              <input [(ngModel)]="loginData.password" name="password" required type="password" matInput placeholder="Digite su contraseña">
               <mat-hint>La contraseña debe ser válido</mat-hint>
             </mat-form-field>
 
