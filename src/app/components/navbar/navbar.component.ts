@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public login : LoginService) { }
 
   ngOnInit(): void {
   }
 
+  //Metodo para cerrar cession
+  public logout(){
+    this.login.logout();
+    window.location.reload();
+  }
 }
