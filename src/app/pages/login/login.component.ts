@@ -49,10 +49,12 @@ export class LoginComponent implements OnInit {
             //Mostramos el Dashboard del administrador
             //window.location.href = '/admin'; //al maestro no le sirvio por que tenia que reiniciar el foron end.
             this.router.navigate(['admin']); //Este usa el maestro pero se debe dar dos veses click
+            this.loginService.loginStatusSubjec.next(true);
           } else if (this.loginService.getUserRole() == "NORMAL"){
             //Mostramos el Dashboard del usuario
             //window.location.href = '/user-dashboard'; //al maestro no le sirvio por que tenia que reiniciar el foron end.
             this.router.navigate(['user-dashboard']); //Este usa el maestro pero se debe dar dos veses click
+            this.loginService.loginStatusSubjec.next(true);
           } else {
             this.loginService.logout();
           }
