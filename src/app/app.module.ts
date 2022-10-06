@@ -19,6 +19,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon'; //Con este usamos iconos
+import { authInterceptorProviders } from './services/auth.interceptor';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { MatIconModule } from '@angular/material/icon'; //Con este usamos iconos
     MatToolbarModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [ authInterceptorProviders ], //Es una constante interceptora que llama a una clase.
   bootstrap: [AppComponent]
 })
 export class AppModule { }

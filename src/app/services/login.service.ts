@@ -60,4 +60,7 @@ export class LoginService {
     return user.authorities[0].authority;
   }
 
+  public getCurrentUser(){
+    return this.http.get(`${baseUrl}/actual-usuario`); //Ese actual-usuario esta en el backend.
+  }
 }
