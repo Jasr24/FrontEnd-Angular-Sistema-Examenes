@@ -25,7 +25,9 @@
     *ngIf="login.isLoggedIn()"
     mat-button
     style = "margin-right: 10px;"
-    class="example-icon favorite-icon" arial-label="Example icon-button with heart icon">
+    class="example-icon favorite-icon"
+    routerLink = "/admin/profile"
+    arial-label="Example icon-button with heart icon">
     {{ login.getUser().username }}
   </button>
 </mat-toolbar>

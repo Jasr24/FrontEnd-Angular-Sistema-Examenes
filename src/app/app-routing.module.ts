@@ -7,34 +7,45 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NormalGuard } from './services/normal.guard';
 import { AdminGuard } from './services/admin.guard';
+import { ProfileComponent} from './pages/profile/profile.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 
 
 const routes: Routes = [
   {
     path:'',
     component:HomeComponent,
-    pathMatch:'full' //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404
+    pathMatch:'full' //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404 pero ojo no FUnciona los hijos
   },
   {
     path:'signup',
     component: SignupComponent,
-    pathMatch:'full' //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404
+    pathMatch:'full' //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404 pero ojo no FUnciona los hijos
   },
   {
     path:'login',
     component: LoginComponent,
-    pathMatch:'full' //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404
+    pathMatch:'full' //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404 pero ojo no FUnciona los hijos
   },
   {
     path:'admin',
     component: DashboardComponent,
-    pathMatch:'full', //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404
-    canActivate: [AdminGuard] //Aqui se poone este guard. para que se ejecute antes de la vista o ruta
+    canActivate: [AdminGuard], //Aqui se poone este guard. para que se ejecute antes de la vista o ruta
+    children:[
+      {
+        path: 'profile',
+        component: ProfileComponent
+      },
+      {
+        path: '',
+        component : WelcomeComponent
+      }
+    ]
   },
   {
     path:'user-dashboard',
     component: UserDashboardComponent,
-    pathMatch:'full', //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404
+    pathMatch:'full', //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404 pero ojo no FUnciona los hijos
     canActivate: [NormalGuard]  //Aqui se poone este guard. para que se ejecute antes de la vista o ruta
   }
 ];
