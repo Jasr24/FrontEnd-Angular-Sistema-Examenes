@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/home/home.component';
 import { MatCardModule } from '@angular/material/card';
@@ -28,6 +30,8 @@ import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriasComponent } from './pages/admin/view-categorias/view-categorias.component';
 import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria.component';
+import { ViewExamenesComponent } from './pages/admin/view-examenes/view-examenes.component';
+import { AddExamenComponent } from './pages/admin/add-examen/add-examen.component';
 
 
 @NgModule({
@@ -43,7 +47,9 @@ import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria
     SidebarComponent,
     WelcomeComponent,
     ViewCategoriasComponent,
-    AddCategoriaComponent
+    AddCategoriaComponent,
+    ViewExamenesComponent,
+    AddExamenComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,9 @@ import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule,
+    MatSelectModule
   ],
   providers: [ authInterceptorProviders ], //Es una constante interceptora que llama a una clase.
   bootstrap: [AppComponent]
