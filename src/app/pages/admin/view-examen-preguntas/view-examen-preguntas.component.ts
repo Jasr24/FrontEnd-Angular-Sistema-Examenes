@@ -16,7 +16,8 @@ export class ViewExamenPreguntasComponent implements OnInit {
   preguntas:any = [];
 
   constructor(private route:ActivatedRoute,
-              private preguntaService:PreguntaService) { }
+              private preguntaService:PreguntaService,
+              private snack:MatSnackBar) { }
 
   ngOnInit(): void {
     this.examenId = this.route.snapshot.params['examenId'];
@@ -31,5 +32,36 @@ export class ViewExamenPreguntasComponent implements OnInit {
       }
     )
   }
+
+  eliminarPregunta(preguntaId:any){
+    Swal.fire({
+      title:'Eliminar pregunta',
+      text:'Estas seguto, ¿Quieres eliminar esta pregunta?',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonColor:'#d33',
+      cancelButtonColor:'#3085d6',
+      confirmButtonText: 'Eliminar',
+      cancelButtonText:'Cancelar'
+    }).then((resultado) => {
+      if(resultado.isConfirmed){
+        this.preguntaService.eliminarPregunta(preguntaId).subscribe(
+          (data) => {
+            this.snack.open('Pregunta eliminado','',{
+              duration:3000
+            });
+            this.preguntas = this.preguntas.filter((pregunta:any) => pregunta.preguntaId != preguntaId)
+          },
+          (error) => {
+            this.snack.open('Error al eliminar la pregunta', '',{
+              duration:3000
+            });
+            console.log(error);
+          }
+        )
+      }
+    })
+  }
+
 
 }
