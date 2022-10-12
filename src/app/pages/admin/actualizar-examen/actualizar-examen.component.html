@@ -1,12 +1,12 @@
 <mat-card>
-  <h1>Agregar nuevo examen</h1>
+  <h1>Actualizar examen</h1>
   <div class="row">
     <div class="col-md-o offset-md-2">
-      <form (ngSubmit) = "guardarCuestionario()">
+      <form *ngIf="examen" (submit) = "actualizarDatos()"> <!--Si el examen existe -->
         <mat-form-field class="w100" appearance="fill">
           <mat-label>Titulo</mat-label>
           <input
-          [(ngModel)]="examenData.titulo"
+          [(ngModel)]="examen.titulo"
           type="text"
           name="titulo"
           placeholder="Digite el título"
@@ -16,7 +16,7 @@
         <mat-form-field class="w100" appearance="fill">
           <mat-label>Descripcion</mat-label>
           <textarea
-          [(ngModel)]="examenData.descripcion"
+          [(ngModel)]="examen.descripcion"
           type="text"
           name="descripcion"
           placeholder="Digite la descripción"
@@ -29,7 +29,7 @@
             <mat-form-field class="w100" appearance="fill">
               <mat-label>Puntos máximos</mat-label>
               <input
-              [(ngModel)]="examenData.puntosMaximos"
+              [(ngModel)]="examen.puntosMaximos"
               type="text"
               name="puntosMaximos"
               placeholder="Digite la cantidad de puntos"
@@ -40,7 +40,7 @@
             <mat-form-field class="w100" appearance="fill">
               <mat-label>Número de preguntas</mat-label>
               <input
-              [(ngModel)]="examenData.numeroPreguntas"
+              [(ngModel)]="examen.numeroPreguntas"
               type="text"
               name="numeroPreguntas"
               placeholder="Digite el numero de preguntas"
@@ -49,13 +49,13 @@
           </div>
         </div>
 
-        <mat-slide-toggle class="mt20" name="activo" [(ngModel)]="examenData.activo" color="primary">
+        <mat-slide-toggle class="mt20" name="activo" [(ngModel)]="examen.activo" color="primary">
           Estado de publicación
         </mat-slide-toggle>
 
         <mat-form-field appearance="fill" class="mt20 w100">
           <mat-label>Categorías</mat-label>
-          <mat-select name="categoria" [(ngModel)]="examenData.categoria.categoriaId">
+          <mat-select name="categoria" [(ngModel)]="examen.categoria.categoriaId">
             <mat-option *ngFor="let c of categorias" [value] = "c.categoriaId">
               {{ c.titulo }}
             </mat-option>
@@ -70,4 +70,4 @@
   </div>
 </mat-card>
 
-<!--{{examenData | json}} <!--- muestra en formato json -->
+<!--{{examen | json}} <!--- muestra en formato json -->

@@ -13,6 +13,7 @@ import { ViewCategoriasComponent } from './pages/admin/view-categorias/view-cate
 import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria.component';
 import { ViewExamenesComponent } from './pages/admin/view-examenes/view-examenes.component';
 import { AddExamenComponent } from './pages/admin/add-examen/add-examen.component';
+import { ActualizarExamenComponent } from './pages/admin/actualizar-examen/actualizar-examen.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,10 @@ const routes: Routes = [
       {
         path : 'add-examen',
         component : AddExamenComponent
+      },
+      {
+        path : 'examen/:examenId',
+        component : ActualizarExamenComponent
       }
     ]
   },
