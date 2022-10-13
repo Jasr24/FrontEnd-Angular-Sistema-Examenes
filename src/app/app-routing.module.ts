@@ -17,6 +17,7 @@ import { ActualizarExamenComponent } from './pages/admin/actualizar-examen/actua
 import { ViewExamenPreguntasComponent } from './pages/admin/view-examen-preguntas/view-examen-preguntas.component';
 import { AddPreguntaComponent } from './pages/admin/add-pregunta/add-pregunta.component';
 import { ActualizarPreguntaComponent} from './pages/admin/actualizar-pregunta/actualizar-pregunta.component';
+import { LoadExamenComponent } from './pages/user/load-examen/load-examen.component';
 
 const routes: Routes = [
   {
@@ -84,8 +85,13 @@ const routes: Routes = [
   {
     path:'user-dashboard',
     component: UserDashboardComponent,
-    pathMatch:'full', //Si escribes mal una ruta te llevara a esta... creo que asi no mostrara el 404 pero ojo no FUnciona los hijos
-    canActivate: [NormalGuard]  //Aqui se poone este guard. para que se ejecute antes de la vista o ruta
+    canActivate: [NormalGuard],  //Aqui se poone este guard. para que se ejecute antes de la vista o ruta
+    children : [
+      {
+        path: ':catId',
+        component : LoadExamenComponent
+      }
+    ]
   }
 ];
 

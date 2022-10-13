@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           } else if (this.loginService.getUserRole() == "NORMAL"){
             //Mostramos el Dashboard del usuario
             //window.location.href = '/user-dashboard'; //al maestro no le sirvio por que tenia que reiniciar el foron end.
-            this.router.navigate(['user-dashboard']); //Este usa el maestro pero se debe dar dos veses click
+            this.router.navigate(['user-dashboard/0']); //Este usa el maestro pero se debe dar dos veses click
             this.loginService.loginStatusSubjec.next(true);
           } else {
             this.loginService.logout();
