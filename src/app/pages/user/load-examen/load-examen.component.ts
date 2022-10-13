@@ -19,10 +19,10 @@ export class LoadExamenComponent implements OnInit {
 
     this.route.params.subscribe((params) => {
       this.catId = params['catId'];
-      
+
       if(this.catId == 0){
         console.log("Cargando todos los examenes");
-        this.examenService.listarCuestionarios().subscribe(
+        this.examenService.obtenerExamenesActivos().subscribe(
           (data:any) => {
             this.examenes = data;
             console.log(this.examenes);
@@ -33,7 +33,7 @@ export class LoadExamenComponent implements OnInit {
         )
       }else {
         console.log("Cargando examen en expecifico");
-        this.examenService.listarExamenesDeUnaCategoria(this.catId).subscribe(
+        this.examenService.obtenerExamenesActivosDeUnaCategoria(this.catId).subscribe(
           (data:any) => {
             this.examenes = data;
             console.log(this.examenes);
