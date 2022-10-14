@@ -28,4 +28,8 @@ export class PreguntaService {
   public actualizarPregunta (pregunta:any){
     return this.http.put(`${baserUrl}/pregunta/`,pregunta);
   }
+
+  public evaluarExamen(preguntas:any){
+    return this.http.post(`${baserUrl}/pregunta/evaluar-examen/`,preguntas);
+  }
 }

@@ -90,6 +90,21 @@ export class StartComponent implements OnInit {
   }
 
   evaluarExamen(){
+
+    /*Este es con el backend ---- Nota:RespuestaDada
+    this.preguntaService.evaluarExamen(this.preguntas).subscribe(
+      (data:any) => {
+        console.log(data);
+        this.puntosConseguidos = data.puntosMaximos;
+        this.respuestasCorrectas = data.respuestasCorrectas;
+        this.intentos = data.intentos;
+        this.esEnviado = true;
+      },
+      (error) => {
+        console.log (error);
+      }
+    )*/
+
       this.esEnviado = true;
       this.preguntas.forEach((p:any) => {
         if(p.respuestaDada == p.respuesta){
@@ -111,6 +126,10 @@ export class StartComponent implements OnInit {
     let mm = Math.floor(this.timer/60);
     let ss = this.timer - mm*60;
     return `${mm} : min : ${ss} : seg`;
+  }
+
+  imprimirPagina(){
+    window.print();
   }
 
 }
