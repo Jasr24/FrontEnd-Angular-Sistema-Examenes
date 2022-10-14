@@ -19,6 +19,7 @@ export class StartComponent implements OnInit {
   intentos =0;
 
   esEnviado = false;
+  timer:any;
 
   constructor(private locationSt: LocationStrategy,
               private route:ActivatedRoute,
@@ -37,16 +38,30 @@ export class StartComponent implements OnInit {
         console.log(data);
         this.preguntas = data;
 
+        this.timer = this.preguntas.length * 2 * 60;
+
         this.preguntas.forEach((p:any) => {
           p['respuestaDada'] = ''; //Apenas se llame al componentes esto es vacio, pero cuando enviamos el formulario ya vendra llena con la respuesta.. esta en el html con el [ngModel]
         })
         console.log(this.preguntas);
+        this.iniciarTemporizador();
       },
       (error)=> {
         console.log(error);
         Swal.fire('Error','Error al cargar las preguntas de la prueba','error');
       }
     )
+  }
+
+  iniciarTemporizador(){
+    let t = window.setInterval(() => {
+      if(this.timer <= 0){
+        this.evaluarExamen();
+        clearInterval(t);
+      }else {
+        this.timer --;
+      }
+    },1000);
   }
 
   prevenirBotonDeRetroceso(){
@@ -67,25 +82,35 @@ export class StartComponent implements OnInit {
       icon : 'info'
     }).then((result)=>{
       if(result.isConfirmed){
-        this.esEnviado = true;
-        this.preguntas.forEach((p:any) => {
-          if(p.respuestaDada == p.respuesta){
-            this.respuestasCorrectas ++;
-            let puntos = this.preguntas[0].examen.puntosMaximos/this.preguntas.length;
-            this.puntosConseguidos += puntos;
-          }
-        });
-
-        this.intentos ++;
-
-        console.log("Respuestas correctas: " + this.respuestasCorrectas);
-        console.log("Puntos conseguidos: " + this.puntosConseguidos);
-        console.log("Intentos: " + this.intentos);
-        console.log(this.preguntas);
+        this.evaluarExamen();
       }
     })
     this.puntosConseguidos = 0;
     this.respuestasCorrectas = 0;
+  }
+
+  evaluarExamen(){
+      this.esEnviado = true;
+      this.preguntas.forEach((p:any) => {
+        if(p.respuestaDada == p.respuesta){
+          this.respuestasCorrectas ++;
+          let puntos = this.preguntas[0].examen.puntosMaximos/this.preguntas.length;
+          this.puntosConseguidos += puntos;
+        }
+      });
+
+      this.intentos ++;
+
+      console.log("Respuestas correctas: " + this.respuestasCorrectas);
+      console.log("Puntos conseguidos: " + this.puntosConseguidos);
+      console.log("Intentos: " + this.intentos);
+      console.log(this.preguntas);
+  }
+
+  obtenerHoraFormateada(){
+    let mm = Math.floor(this.timer/60);
+    let ss = this.timer - mm*60;
+    return `${mm} : min : ${ss} : seg`;
   }
 
 }
